@@ -4,20 +4,17 @@ export const fetchWeather = (cityName) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=f592bb1f055a6a224e93a8020d397bbb&lang={it}&units=metric`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=f592bb1f055a6a224e93a8020d397bbb&lang=it&units=metric`
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log("data", data);
         dispatch({
           type: GET_THE_WEATHER,
-          payload: { data },
+          payload: {
+            city: data.city,
+            list: data.list,
+          },
         });
       } else {
         throw new Error("Seems there are some Server Problems");

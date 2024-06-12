@@ -1,7 +1,8 @@
 import { GET_THE_WEATHER } from "../action";
 
 const initialState = {
-  content: [],
+  city: {},
+  list: [],
 };
 
 const getTheWeatherReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ const getTheWeatherReducer = (state = initialState, action) => {
     case GET_THE_WEATHER:
       return {
         ...state,
-        content: action.payload.data,
+        city: action.payload.city,
+        list: action.payload.list,
       };
     default:
       return state;

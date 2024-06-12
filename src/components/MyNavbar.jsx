@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 const MyNavbar = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary ">
-      <Container fluid className="mb-5">
+      <Container fluid className="mb-2">
         <Navbar.Brand href="#">WTW - What&#39;s the Weather?</Navbar.Brand>
       </Container>
     </Navbar>

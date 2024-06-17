@@ -1,6 +1,9 @@
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
+import SingleWeatherInfo from "./SingleWeatherInfo";
+import CardFooter from "react-bootstrap/CardFooter";
 
 const Information = ({ day }) => {
   const dateFormatter = (date) => {
@@ -12,6 +15,11 @@ const Information = ({ day }) => {
     return Math.round(temp);
   };
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Col
@@ -19,25 +27,29 @@ const Information = ({ day }) => {
         sm={5}
         md={5}
         lg={3}
-        className="list-items p-2 d-flex justify-content-center align-content-center"
+        className="list-items -flex flex-column justify-content-center align-content-center"
       >
-        <ListGroup className="text-center d-flex align-items-center align-content-center">
+        <ListGroup className="list-group text-center d-flex align-items-center align-content-center">
+          <div className="image-div">
+            <img
+              src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+              alt="weather-icon"
+              height="120px"
+              width="120px"
+            />
+          </div>
           <ListGroupItem>
-            <i className="bi bi-clock mx-1"></i>
-            {dateFormatter(day.dt_txt)}
+            {dateFormatter(day.dt_txt)} <i className="bi bi-clock mx-1"></i>
           </ListGroupItem>
           <ListGroup.Item>
-            {temperatureFormatter(day.main.temp_min)}°C -{" "}
-            {temperatureFormatter(day.main.temp_max)}°C
+            {temperatureFormatter(day.main.temp)}°C
           </ListGroup.Item>
-          <img
-            src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-            alt="weather-icon"
-            height="120px"
-            width="120px"
-          />
         </ListGroup>
+        <CardFooter className="card-footer text-center" onClick={handleShow}>
+          Altre Informazioni
+        </CardFooter>
       </Col>
+      <SingleWeatherInfo show={show} handleClose={handleClose} day={day} />
     </>
   );
 };

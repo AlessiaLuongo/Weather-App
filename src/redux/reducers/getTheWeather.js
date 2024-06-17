@@ -13,6 +13,7 @@ const getTheWeatherReducer = (state = initialState, action) => {
         city: action.payload.city,
         list: action.payload.list,
       };
+
     default:
       return state;
   }

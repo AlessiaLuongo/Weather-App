@@ -1,20 +1,84 @@
 #card,
 .list-group-item,
 body {
-  background-color: #c6eef5;
   border-style: none;
   font-weight: bold;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+  background-color: transparent;
 }
 #card {
-  margin-bottom: 30px;
   padding: 20px;
   border: 0;
+  font-size: 5vh;
 }
 
 .card-title {
-  font-size: 5.5vh;
+  font-size: 4.5vh;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-image: url("/public/bg-weather.avif");
+  background-size: 100%;
 }
 .list-items {
-  border: 1.5px solid black;
+  border: 1px solid black;
   margin: 2vh;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 12px 1px #553b57;
+  box-shadow: 0px 0px 12px 3px #553b57;
+  background-color: white;
+  border-radius: 0;
+}
+
+body {
+  background-color: #f6fdff;
+  min-height: 100vh;
+}
+#ora-precisa {
+  font-size: 4.5vh;
+  color: #262626;
+}
+
+.modale {
+  background-image: url("/public/bg-weather.avif");
+  background-size: 100%;
+}
+
+.modale-body {
+  background-color: white;
+  font-size: 3.5vh;
+}
+.navbar {
+  background-image: url("/public/bg-weather.avif");
+  background-size: 100%;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.card-footer {
+  background-image: url("/public/bg-weather.avif");
+  background-size: cover;
+  font-size: 3vh;
+  border-radius: 0 !important;
+}
+.card-footer:hover {
+  cursor: pointer;
+}
+
+img {
+  filter: drop-shadow(2px 2px 2px #93ddf7);
+}
+.card-body {
+  margin-top: 8vh;
+  gap: 5vh;
+}
+
+.list-items {
+  transition: all 0.2s ease-in-out;
+}
+.list-items:hover {
+  transform: scale(1.1);
+}
+.city-name {
+  padding-left: 7.8vh;
 }

@@ -5,12 +5,14 @@ const MyNavbar = () => {
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary "
-      bg="secondary"
+      className="bg-body-tertiary navbar"
+      bg="dark"
       data-bs-theme="dark"
     >
       <Container fluid>
-        <Navbar.Brand href="#">WTW - What&#39;s the Weather?</Navbar.Brand>
+        <Navbar.Brand href="#" id="Navbar">
+          WTW - What&#39;s the Weather?
+        </Navbar.Brand>
       </Container>
     </Navbar>
   );

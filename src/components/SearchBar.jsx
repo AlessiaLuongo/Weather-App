@@ -41,10 +41,20 @@ const SearchBar = () => {
     new Set(listOfDays.map((item) => dateFormatter(item.dt_txt)))
   );
 
+  const firstLetterUpperCase = (stringa) => {
+    return stringa.charAt(0).toUpperCase() + stringa.toLowerCase().slice(1);
+  };
+
+  const whatDay = (date) => {
+    const thisDate = new Date(date.split("/").reverse().join("-"));
+    let thisDay = thisDate.toLocaleString("it-IT", { weekday: "long" });
+    return thisDay;
+  };
+
   return (
     <>
       <Container fluid>
-        <Row className="justify-content-center align-content-center mt-5">
+        <Row className="search-bar justify-content-center align-content-center mt-5 mb-4">
           <Col xs={12} sm={12} md={6} lg={6}>
             <Form className="d-flex" onSubmit={handleSubmit}>
               <Form.Control
@@ -55,7 +65,7 @@ const SearchBar = () => {
                 value={cityName}
                 onChange={handleInputChange}
               />
-              <Button variant="outline-dark" type="submit">
+              <Button variant="primary" type="submit">
                 Search
               </Button>
             </Form>
@@ -64,14 +74,17 @@ const SearchBar = () => {
       </Container>
       <Container fluid>
         <Row>
+          <p className="city-name">
+            {" "}
+            {listOfCity.name} {listOfCity.country}
+          </p>
           <Col xs={12} sm={12} md={12} lg={12}>
             {listOfDays &&
               listOfDays.length > 0 &&
               uniqueDates.map((date, index) => (
                 <Card key={index} id="card">
-                  <hr />
-                  <CardTitle className="card-title text-center p-2">
-                    {listOfCity.name} {listOfCity.country} - {date}
+                  <CardTitle className="card-title text-center p-3">
+                    {firstLetterUpperCase(whatDay(date))}
                   </CardTitle>
                   <Card.Body className="card-body d-flex flex-wrap justify-content-center align-content-center">
                     {listOfDays

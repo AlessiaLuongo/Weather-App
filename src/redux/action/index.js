@@ -4,7 +4,7 @@ export const fetchWeather = (cityName) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=f592bb1f055a6a224e93a8020d397bbb&lang=it&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=f592bb1f055a6a224e93a8020d397bbb&lang=it&units=metric`
       );
       if (response.ok) {
         const data = await response.json();
